@@ -23,6 +23,12 @@
   --color-motevaset: #fffbeb;     /* grade badge: متوسط (amber tint) */
   --color-motevaset-text: #92400e;
 
+  /* ─── Herb shop palette (عطاری) — green ramp on the shared neutrals ──── */
+  --color-forest: #16382b;        /* near-black green — headings, bands      */
+  --color-moss: #2f5d46;          /* mid green — hover/active states         */
+  --color-leaf: #4c8a63;          /* accent green — links, progress bars     */
+  --color-mist: #eaf2ec;          /* green-tinted chip fills                 */
+
   /* Motion */
   --animate-fade-in: fade-in 0.5s ease-in-out;
 }
@@ -80,6 +86,16 @@ body {
     color: var(--color-motevaset-text);
   }
 
+  /* Herb badges (used by HerbProductCard) */
+  .badge-herb-organic {
+    background: #e7f5ec;
+    color: #1f6b43;
+  }
+  .badge-herb-certified {
+    background: #fbf1dd;
+    color: #8a5a18;
+  }
+
   /* CoffeeWizard ratio slider: minimal thumb over the illustrated track */
   .ratio-range {
     -webkit-appearance: none;
@@ -108,4 +124,45 @@ body {
     border: 2px solid white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
+}
+
+/* ─── Talking character animations ─────────────────────────────────────
+   Driven by the `is-speaking` class on the .talking-character container.
+   Each element uses transform-box: fill-box so the origin is its own box.
+   The global prefers-reduced-motion rule above still flattens durations
+   when the user opts out. */
+.talking-character .char-whole {
+  transform-origin: 50% 100%;
+  animation: char-sway 2.8s ease-in-out infinite;
+}
+.talking-character .char-eyes {
+  transform-origin: 50% 50%;
+  animation: char-blink 4.2s infinite;
+}
+.talking-character.is-speaking .char-mouth {
+  transform-origin: 50% 50%;
+  animation: char-talk 0.75s ease-in-out infinite;
+}
+.talking-character:not(.is-speaking) .char-mouth {
+  transform-origin: 50% 50%;
+  animation: char-breathe 3.6s ease-in-out infinite;
+}
+
+@keyframes char-sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(1.5deg); }
+}
+@keyframes char-blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  94%, 96% { transform: scaleY(0.1); }
+}
+@keyframes char-talk {
+  0%, 100% { transform: scaleY(0.25); }
+  32% { transform: scaleY(1.05); }
+  58% { transform: scaleY(0.45); }
+  78% { transform: scaleY(0.85); }
+}
+@keyframes char-breathe {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(0.8, 0.92); }
 }

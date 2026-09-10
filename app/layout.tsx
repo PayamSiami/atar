@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+import { HerbHeader } from "@/components/header";
+import { HerbFooter } from "@/components/footer";
 
 const vazirmatn = Vazirmatn({
   subsets: ["arabic", "latin"],
@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   description: "پرفروش‌ترین قهوه‌ها و نظرات مشتریان",
 };
 
+/* Minimal root shell: each storefront (coffee "/", herb "/atar") renders its
+   own header + footer, so the shared chrome never leaks across brands. */
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,9 +25,9 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body className={`${vazirmatn.variable} font-sans antialiased bg-cream`}>
-        <Header />
+        <HerbHeader />
         {children}
-        <Footer />
+        <HerbFooter />
       </body>
     </html>
   );

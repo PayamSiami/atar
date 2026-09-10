@@ -1,112 +1,31 @@
-export function Footer() {
-    return (
-        <footer className="w-full mt-16 mb-6 px-4 md:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto bg-foam rounded-3xl border border-latte shadow-sm overflow-hidden">
-                {/* Brand band */}
-                <div className="bg-espresso px-6 py-4 flex items-center justify-between">
-                    <h2 className="text-base font-bold text-foam tracking-tight">
-                        آبجوش
-                    </h2>
-                    <p className="text-xs text-foam/70">قهوه‌ای برای هر سلیقه</p>
-                </div>
+import Link from "next/link";
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 md:p-8">
-                    {/* Useful links */}
-                    <div>
-                        <h3 className="text-sm font-bold text-ink mb-3">لینک‌های مفید</h3>
-                        <ul className="space-y-2.5 text-sm">
-                            {[
-                                { href: "#products", label: "محصولات" },
-                                { href: "#about", label: "درباره‌ی قهوه" },
-                                { href: "#testimonials", label: "نظرات مشتریان" },
-                                { href: "#faq", label: "سوالات متداول" },
-                            ].map(({ href, label }) => (
-                                <li key={href}>
-                                    <a
-                                        href={href}
-                                        className="text-clay hover:text-roast transition-colors"
-                                    >
-                                        {label}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+const FOOTER_LINKS = [
+    { href: "#atar-products", label: "محصولات" },
+    { href: "#atar-teas", label: "دمنوش‌ها" },
+    { href: "#atar-about", label: "درباره ما" },
+    { href: "#atar-faq", label: "سوالات متداول" },
+];
 
-                    {/* Social + searches */}
-                    <div>
-                        <h3 className="text-sm font-bold text-ink mb-3">ما را دنبال کنید</h3>
-                        <div className="flex gap-2.5">
-                            <a
-                                href="#"
-                                className="w-10 h-10 rounded-full bg-beige flex items-center justify-center text-clay hover:bg-roast hover:text-foam transition-colors"
-                                aria-label="اینستاگرام"
-                            >
-                                <InstagramIcon className="w-5 h-5" />
-                            </a>
-                            <a
-                                href="#"
-                                className="w-10 h-10 rounded-full bg-beige flex items-center justify-center text-clay hover:bg-roast hover:text-foam transition-colors"
-                                aria-label="تلگرام"
-                            >
-                                <TelegramIcon className="w-5 h-5" />
-                            </a>
-                            <a
-                                href="#"
-                                className="w-10 h-10 rounded-full bg-beige flex items-center justify-center text-clay hover:bg-roast hover:text-foam transition-colors"
-                                aria-label="واتساپ"
-                            >
-                                <WhatsAppIcon className="w-5 h-5" />
-                            </a>
-                        </div>
+const POPULAR_SEARCHES = [
+    "خرید عسل طبیعی",
+    "زعفران سرگل",
+    "دمنوش آرام‌بخش",
+    "روغن بادام شیرین",
+];
 
-                        <h3 className="text-sm font-bold text-ink mt-6 mb-3">جست‌وجوهای پرطرفدار</h3>
-                        <ul className="space-y-2 text-sm">
-                            {["خرید قهوه عربیکا", "خرید قهوه اسپرسو", "قهوه سبوس‌خورده"].map((search) => (
-                                <li key={search}>
-                                    <a href="#" className="text-clay hover:text-roast transition-colors">
-                                        {search}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+const STATS = [
+    { value: "۴۰+", label: "سال سابقه" },
+    { value: "۲۰۰+", label: "قلم محصول" },
+    { value: "۱۰۰٪", label: "ضمانت اصالت" },
+];
 
-                    {/* About */}
-                    <div>
-                        <h3 className="text-sm font-bold text-ink mb-3">درباره‌ی آبجوش</h3>
-                        <p className="text-sm text-clay leading-relaxed">
-                            آبجوش قهوه‌ی تازه‌رست را با درجه‌ی عصاره‌گیری شفاف و روش دم‌آوری
-                            مناسب سلیقه‌ی شما ارائه می‌کند؛ از دانه‌ی تک‌خاستگاه تا ترکیب‌های
-                            خانگی.
-                        </p>
-                        <div className="mt-4 flex gap-6">
-                            <div>
-                                <p className="text-lg font-extrabold text-roast">۱۰+</p>
-                                <p className="text-xs text-clay">روش دم‌آوری</p>
-                            </div>
-                            <div>
-                                <p className="text-lg font-extrabold text-roast">۳</p>
-                                <p className="text-xs text-clay">خاستگاه</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Bottom bar */}
-                <div className="border-t border-latte px-6 py-4 text-center text-xs text-mocha">
-                    کلیه حقوق این وب‌سایت متعلق به آبجوش است.
-                </div>
-            </div>
-        </footer>
-    );
-}
-
-// Simple icon components
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
-        <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
         </svg>
     );
 }
@@ -114,7 +33,7 @@ function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
 function TelegramIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-            <path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+            <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" />
         </svg>
     );
 }
@@ -124,5 +43,88 @@ function WhatsAppIcon(props: React.SVGProps<SVGSVGElement>) {
         <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
+    );
+}
+
+export function HerbFooter() {
+    return (
+        <footer id="atar-home" className="w-full">
+            {/* Brand band */}
+            <section className="bg-forest text-foam">
+                <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 md:px-6 lg:px-8 py-10 text-center md:flex-row md:text-start">
+                    <div className="shrink-0">
+                        <h2 className="text-3xl font-extrabold tracking-tight md:text-5xl">عطاری بوعلی</h2>
+                        <span className="mt-1 block text-sm tracking-[0.15em] text-foam/80">میراثی از طبیعت</span>
+                    </div>
+                    <ul className="flex flex-wrap gap-4 text-sm text-foam/80">
+                        {FOOTER_LINKS.map(({ href, label }) => (
+                            <li key={href}>
+                                <a href={href} className="hover:text-white transition-colors">{label}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </section>
+
+            {/* Main footer */}
+            <section className="bg-beige text-clay">
+                <div className="mx-auto grid max-w-7xl gap-8 px-4 md:px-6 lg:px-8 py-8 text-sm md:grid-cols-3">
+                    <div>
+                        <h3 className="font-bold text-ink mb-2">دسترسی سریع</h3>
+                        <ul className="space-y-1">
+                            {FOOTER_LINKS.map(({ href, label }) => (
+                                <li key={href}>
+                                    <a href={href} className="hover:text-ink transition-colors">{label}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 className="font-bold text-ink mb-2">جستجوهای پرطرفدار</h3>
+                        <ul className="flex flex-wrap gap-2">
+                            {POPULAR_SEARCHES.map((item) => (
+                                <li key={item}>
+                                    <span className="rounded-full bg-cream px-2 py-0.5 text-xs text-clay">{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 className="font-bold text-ink mb-2">درباره عطاری بوعلی</h3>
+                        <p className="leading-relaxed text-clay/80 mb-3">
+                            با بیش از چهار دهه سابقه در بازار سنتی، گیاهان دارویی، دمنوش‌ها و عرقیجات را مستقیم از تولیدکننده به خانه‌ی شما می‌رسانیم.
+                        </p>
+                        <div className="flex gap-4 text-center">
+                            {STATS.map(({ value, label }) => (
+                                <div key={label}>
+                                    <span className="block text-lg font-bold text-forest">{value}</span>
+                                    <span className="text-[0.65rem] text-mocha">{label}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Socials + copyright */}
+                <div className="border-t border-latte bg-cream">
+                    <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 md:px-6 lg:px-8 py-4 md:flex-row">
+                        <div className="flex gap-3">
+                            {[InstagramIcon, TelegramIcon, WhatsAppIcon].map((Icon, i) => (
+                                <a key={i} href="#" aria-label={["Instagram", "Telegram", "WhatsApp"][i]}
+                                    className="grid w-9 h-9 place-items-center rounded-full bg-beige text-clay hover:bg-moss hover:text-white transition-colors">
+                                    <Icon className="w-4 h-4" />
+                                </a>
+                            ))}
+                        </div>
+                        <p className="text-xs text-mocha">
+                            کلیه حقوق این وب‌سایت متعلق به{" "}
+                            <b className="text-clay">عطاری بوعلی</b> است.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </footer>
     );
 }
