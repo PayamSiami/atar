@@ -1,6 +1,6 @@
 import { HerbCategories } from "@/components/categories";
-import { HerbShowcase } from "@/components/herb-showcase";
-import { HerbTestimonials } from "@/components/herb-testimonials";
+import { HerbShowcase } from "@/components/showcase";
+import { HerbTestimonials } from "@/components/testimonials";
 import { HerbAbout } from "@/components/about";
 import { HerbFaq } from "@/components/faq";
 import { HerbTags } from "@/components/herb-tags";

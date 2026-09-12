@@ -1,5 +1,5 @@
-import { HerbHero } from "@/components/herb";
-import { HerbShopContent } from "@/components/herb-shop-content";
+import { Hero } from "@/components/hero";
+import { HerbShopContent } from "@/components/shop-content";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <HerbHero />
+      <Hero />
       <HerbShopContent />
     </>
   );
