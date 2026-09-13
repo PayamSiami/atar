@@ -31,14 +31,15 @@ export function Hero() {
             {/* Background layer — no z-index, so it sits under the content. */}
             <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative aspect-5/2 max-h-full w-full max-w-full">
-                    <Image
-                        src="/hero.png"
-                        alt=""
-                        fill
-                        sizes="100vw"
-                        priority
-                        className="select-none object-contain"
-                    />
+                    {!isPlaying && (
+                        <Image
+                            src="/hero-bg.png"
+                            alt="hero-bg"
+                            fill
+                            sizes="100vw"
+                            priority
+                            className="select-none object-contain"
+                        />)}
 
                     <video
                         ref={videoRef}
@@ -52,8 +53,8 @@ export function Hero() {
                         onPlaying={() => setIsPlaying(true)}
                         onPause={() => setIsPlaying(false)}
                         onError={() => setVideoError(true)}
-                        className="absolute left-1/2 top-[20%] w-[11%] -translate-x-1/5 -translate-y-5/9 object-contain pointer-events-none animate-fade-in"
-
+                        // className="absolute left-1/2 top-[20%] w-[11%] -translate-x-1/5 -translate-y-5/9 object-contain pointer-events-none animate-fade-in"
+                        className="w-full h-fit object-contain pointer-events-none animate-fade-in"
                     />
 
                     {/*
